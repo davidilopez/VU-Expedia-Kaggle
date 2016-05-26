@@ -5,7 +5,6 @@ prop_id
 prop_starrating
 prop_review_score
 prop_brand_bool
-price_usd
 promotion_flag
 srch_destination_id
 srch_length_of_stay
@@ -14,10 +13,8 @@ srch_adults_count
 srch_children_count
 srch_room_count
 srch_saturday_night_bool
-srch_query_affinity_score
 random_bool
 prop_location_score_aggregate
-prop_historical_price
 prop_delta_price
 price_order
 target_month_num
