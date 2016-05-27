@@ -1,0 +1,4 @@
+To test on Kaggle:
+1. Install the packages with the script
+2. Run the evaluation script step by step in the Kaggle folder
+3. Get the 
