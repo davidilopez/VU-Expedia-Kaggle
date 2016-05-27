@@ -1,4 +1,13 @@
 To test on Kaggle:
-1. Install the packages with the script
-2. Run the evaluation script step by step in the Kaggle folder
-3. Get the 
+1. Install the packages with the script "PACKAGE_INSTALL_SCRIPT.R" (just open it
+and click on source).
+2. Run the "MASTER_SCRIPT_KAGGLE_EVAL.R"
+3. Take the output file and upload it to the Kaggle competition.
+4. If the results are better than the baseline, go to the final model, if not,
+try modifying the parameters in the modelling part (number of trees, max depth,
+number of folds, etc.)
+
+To run the final model:
+1. Run the "MASTER_SCRIPT_MODELLING.R" with the successful parameters found in
+the previous step.
+2. Take the output file, name it "080.csv" and we can send it to Mark.

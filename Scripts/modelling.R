@@ -17,26 +17,10 @@ sample.train <- unique(sort(sample_users_pool[1:length(sample_users_pool)]))
 train.sample <- train.clean[train.clean$srch_id %in% sample.train,]
 
 rm(train.clean, individual_users, sample_users_pool, sample.train)
-# rm(train.clean, individual_users, sample_users_pool, sample.train )
 
 ## Set up the initial model for click_bool
 # Get the initial variables from the text file
 variable.names <- scan("./selected_features.txt", what="", sep="\n")
-
-## Create formulas for the models           DEPRECATED ---------
-# # Prediction of clicking on a hotel
-# click_bool.formula <- paste( "click_bool", '~', paste( variable.names, collapse=' + ' ) )
-# click_bool.formula <- as.formula(click_bool.formula)
-# 
-# # Prediction of booking a hotel
-# booking_bool.formula <- paste( "booking_bool", '~', paste( variable.names, collapse=' + ' ), '+ click_bool' )
-# booking_bool.formula <- as.formula(booking_bool.formula)
-# 
-# # Prediction of the ranking of the hotels
-# position.formula <- paste( "position", '~', paste( variable.names, 
-#                                                    collapse=' + ' ), 
-#                            '+ click_bool + booking_bool' )
-# position.formula <- as.formula(position.formula)
 
 ## Model each prediction------------------------
 ## Model the click boolean
@@ -99,4 +83,7 @@ test.sample$position.pred <- xgboost.position.pred
 test.sample <- test.sample[order(test.sample$srch_id, test.sample$position.pred),]
 test.sample$position.order <- ave(test.sample$position.pred, test.sample$srch_id, FUN = seq_along)
 test.sample <- test.sample[order(test.sample$srch_id, test.sample$position.order),]
-check <- data.frame(cbind(test.sample$srch_id, test.sample$click_bool, test.sample$booking_bool, test.sample$position.order))
+
+# Make the final output file
+final_output <- cbind(test.sample$srch_id, test.sample$prop_id)
+write.csv(final_output, 'FINAL_Output (080).csv')
